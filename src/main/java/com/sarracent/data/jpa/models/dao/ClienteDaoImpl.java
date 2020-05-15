@@ -1,5 +1,6 @@
 package com.sarracent.data.jpa.models.dao;
 
+import com.sarracent.data.jpa.models.entity.Cliente;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,9 +13,15 @@ public class ClienteDaoImpl implements IClienteDao {
     @PersistenceContext
     private EntityManager em;
 
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
     public List findAll() {
         return em.createQuery("from Cliente").getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void save(Cliente cliente) {
+        em.persist(cliente);
     }
 }
