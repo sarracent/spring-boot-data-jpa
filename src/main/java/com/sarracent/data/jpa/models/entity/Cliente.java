@@ -1,5 +1,7 @@
 package com.sarracent.data.jpa.models.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,12 +20,8 @@ public class Cliente implements Serializable {
 
     @Column(name="create_at")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
-
-    @PrePersist
-    public void prePersist() {
-        createAt = new Date();
-    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
