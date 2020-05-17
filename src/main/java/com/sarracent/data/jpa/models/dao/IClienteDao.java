@@ -1,15 +1,8 @@
 package com.sarracent.data.jpa.models.dao;
 
 import com.sarracent.data.jpa.models.entity.Cliente;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+public interface IClienteDao extends CrudRepository<Cliente, Long> {
 
-public interface IClienteDao {
-    public List<Cliente> findAll();
-
-    public void save(Cliente cliente);
-
-    public Cliente findOne(Long id);
-
-    public void delete(Long id);
 }
